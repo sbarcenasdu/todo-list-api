@@ -30,7 +30,15 @@ Esta es una API RESTful desarrollada con [NestJS](https://nestjs.com/) para gest
    npm install
    ```
 
-3. Configura la base de datos PostgreSQL en el archivo `ormconfig.json` o en las variables de entorno.
+3. Configura la base de datos PostgreSQL en en las variables de entorno `.env`
+	```bash
+	DATABASE_HOST=tu_host
+	DATABASE_PORT=tu_puerto
+	DATABASE_USER=tu_usuario
+	DATABASE_PASSWORD=tu_contraseña
+	DATABASE_NAME=tu_base_de_datos
+	```
+
 
 4. Ejecuta las migraciones para crear las tablas necesarias:
    ```bash
@@ -86,32 +94,22 @@ Una vez que la API esté en funcionamiento, puedes interactuar con ella mediante
 ## Estructura del Proyecto
 
 ```bash
-├── src
-│   ├── tasks
-│   │   ├── task.entity.ts      # Definición de la entidad Task
-│   │   ├── tasks.service.ts    # Lógica de negocio para las tareas
-│   │   ├── tasks.controller.ts # Controlador para manejar las solicitudes HTTP
-│   │   └── tasks.module.ts     # Módulo de las tareas
-│   └── app.module.ts           # Módulo principal de la aplicación
-├── test                        # Pruebas unitarias y de integración
-├── ormconfig.json              # Configuración de TypeORM
-├── package.json                # Dependencias y scripts
-└── README.md                   # Descripción del proyecto
+├── .env                        # Variables de entorno, incluyendo datos sensibles de la base de datos
+├── .gitignore                  # Archivos y directorios que Git debe ignorar
+├── package.json                # Dependencias y scripts del proyecto
+├── tsconfig.json               # Configuración de TypeScript
+└── src
+    ├── app.controller.ts       # Controlador principal de la aplicación
+    ├── app.module.ts           # Módulo principal de la aplicación
+    ├── main.ts                 # Punto de entrada de la aplicación
+    └── tasks
+        ├── tasks.controller.ts # Controlador para manejar las solicitudes HTTP relacionadas con tareas
+        ├── tasks.module.ts     # Módulo de las tareas
+        ├── tasks.service.ts    # Lógica de negocio para las tareas
+        └── entities
+            └── task.entity.ts  # Definición de la entidad Task
+
 ```
-
-## Contribución
-
-Si deseas contribuir a este proyecto, sigue estos pasos:
-
-1. Haz un fork del repositorio.
-2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
-3. Realiza tus cambios y haz commit (`git commit -m 'Añadir nueva funcionalidad'`).
-4. Haz push a la rama (`git push origin feature/nueva-funcionalidad`).
-5. Abre un Pull Request.
-
-## Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para obtener más detalles.
 
 ## Contacto
 
